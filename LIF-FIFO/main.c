@@ -1,12 +1,45 @@
 #include "monty.h"
 
+void opcode_push(__attribute__((unused))stack_t **head_list, unsigned int line_number)
+{
+	printf("line: %d\n", line_number);
+}
+
+void opcode_pall(__attribute__((unused))stack_t **head_list, unsigned int line_number)
+{
+	printf("line: %d\n", line_number);
+}
+
+/*Funcion que busca y devuelve un pointer a la funcion*/
+void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int line_number)
+{
+	instruction_t function[] = {
+	    {"push", opcode_push},
+	    {"pall", opcode_pall},
+	    {NULL, NULL}
+		};
+	int i = 0;
+
+	/* find the input function in our opcode function */
+	for (; function[i].opcode != NULL && *(function[i].opcode) != *opcode_input; i++)
+		;
+	function[i].f(head_list, line_number);
+}
+
+/*elimina \n*/
+char *new_line_remove(char *buffer)
+{
+	int i = 0;
+
+	for (; *(buffer + i) != '\n'; i++)
+		;
+	*(buffer + i) = '\0';
+	return (buffer);
+}
+
+/*main*/
 int main(int argc, char **argv)
 {
-	FILE *fp = NULL;
-	char str1[10], str2[10], str3[10], str4[10];
-	int idx = 0, i = 0;
-	char *line = NULL, *token;
-	size_t size = 0;
 
 	if (argc > 2 || argc == 0)
 	{
@@ -19,31 +52,25 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	fp = fopen(argv[1], "r");
+	FILE *file_pointer = NULL;
+	char *buffer = NULL, *opcode = NULL;
+	size_t bytes_qty = 0;
+	stack_t *head_list = NULL;
+	int line_number = 1;
 
-	for (i = 1; getline(&line, &size, fp) != EOF; i++)
+	file_pointer = fopen(*(argv + 1), "r");
+	for (; getline(&buffer, &bytes_qty, file_pointer) != EOF; line_number++)
 	{
-		printf("line %d = %s", i, line);
-		token = strtok(line, " ");
-		while (token != NULL)
-		{
-			printf("token %d %s\n", i, token);
-			token = strtok(NULL, " ");
-		}
+		/* remove new line */
+		buffer = new_line_remove(buffer);
+		/* get opcode = pall or push */
+		opcode = strtok(buffer, " ");
+		/* get the opcode, no need to return */
+		get_opcode_function(opcode, &head_list, line_number);
+		/* *data = NULL ??????????? data = strtok(NULL, " , \n");
+		printf("%s\n", data); */
 	}
-
-	//printf("argc = %d || argv = %s || argv = %s \n", argc, argv[0], argv[1]);
-	/*while(1)
-	{
-		idx = fgetc(fp);
-		if (idx == '\n')
-			printf("\nHay un salto de linea\n");
-		if(feof(fp))
-			break;
-		printf("%c", idx);
-	}*/
-	//fprintf(fp, "%s %s %s %d", "We", "are", "in", 2012);
-	printf("afuera\n");
-	fclose(fp);
+	fclose(file_pointer);
+	free(buffer);
 	return (0);
 }
