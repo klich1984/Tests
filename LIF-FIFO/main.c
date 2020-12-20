@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
 	fp = fopen(argv[1], "r");
 
-	/*for (i = 1; getline(&line, &size, fp) != EOF; i++)
+	for (i = 1; getline(&line, &size, fp) != EOF; i++)
 	{
 		printf("line %d = %s", i, line);
 		token = strtok(line, " ");
@@ -30,10 +30,10 @@ int main(int argc, char **argv)
 			printf("token %d %s\n", i, token);
 			token = strtok(NULL, " ");
 		}
-	}*/
+	}
 
 	//printf("argc = %d || argv = %s || argv = %s \n", argc, argv[0], argv[1]);
-	while(1)
+	/*while(1)
 	{
 		idx = fgetc(fp);
 		if (idx == '\n')
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 		if(feof(fp))
 			break;
 		printf("%c", idx);
-	}
+	}*/
 	//fprintf(fp, "%s %s %s %d", "We", "are", "in", 2012);
 	printf("afuera\n");
 	fclose(fp);
