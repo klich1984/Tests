@@ -32,19 +32,15 @@ int main(int argc, char **argv)
 		}
 	}*/
 
-	fscanf(fp,"%s" "%s" "%s" "%s", str1, str2, str3, str4);
-	printf("%s %s %s %s\n", str1, str2, str3, str4);
 	//printf("argc = %d || argv = %s || argv = %s \n", argc, argv[0], argv[1]);
-	while(fscanf(fp,"%s" "%s", str1, str2) == '\n')
+	while(1)
 	{
-		printf("%s\n", str1);
-		printf("adentro\n");
-		/*idx = fgetc(fp);
+		idx = fgetc(fp);
 		if (idx == '\n')
-			printf("Hay un salto de linea");
+			printf("\nHay un salto de linea\n");
 		if(feof(fp))
 			break;
-		printf("%c", idx);*/
+		printf("%c", idx);
 	}
 	//fprintf(fp, "%s %s %s %d", "We", "are", "in", 2012);
 	printf("afuera\n");
