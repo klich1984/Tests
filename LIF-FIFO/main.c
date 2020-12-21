@@ -54,10 +54,10 @@ int main(int argc, char **argv)
 	}
 
 	FILE *file_pointer = NULL;
-	char *buffer = NULL, *opcode = NULL;
+	char *buffer = NULL, *opcode = NULL, *str = "push";
 	size_t bytes_qty = 0;
 	stack_t *head_list = NULL;
-	int line_number = 1, value = 0;
+	int line_number = 1, value = 0, i = 0, len_str = 0;
 	char **tokens = NULL;
 
 	file_pointer = fopen(*(argv + 1), "r");
@@ -67,7 +67,31 @@ int main(int argc, char **argv)
 		buffer = new_line_remove(buffer);
 		printf("buffer = %s\n", buffer);
 		tokens = divide_line(buffer, " ");
-		printf("tokens[0] = %s | tokens[1] = %s\n", tokens[0], tokens[1]);
+		opcode = tokens[0];
+		if(tokens[1])
+			value = atoi(tokens[1]);
+		else
+			value = 0;
+		printf("tokens[0] = %s | opcode = %s\n", tokens[0], opcode);
+		printf("tokens[1] = %s | value = %d\n", tokens[1], value);
+
+
+
+		len_str = strlen(str);
+		printf("len_str = %d\n", len_str);
+		for (i = 0; tokens[0][i] == str[i] && tokens[0][i] != '\0'; i++)
+		{
+			printf("%c", str[i]);
+		}
+		printf("\n");
+		printf("i = %d\n", i);
+		if (i == len_str)
+			printf("son iguales\n");
+		else
+			printf("No son iguales\n");
+
+
+
 		/* get opcode = pall or push */
 		opcode = strtok(buffer, " ");
 		//value = atoi(strtok(NULL, " "));
