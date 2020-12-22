@@ -3,6 +3,18 @@
 /*main*/
 int main(int argc, char **argv)
 {
+	char *opcode = NULL, *token_1 = NULL;
+	int value = 0;
+	var_t.line_number = 1;
+	(void)token_1;
+	/*FILE *file_pointer = NULL;
+	//char *buffer = NULL;*/
+
+	/*/size_t bytes_qty = 0;
+	//stack_t *head_list = NULL;
+	//int line_number = 1;*/
+
+
 	if (argc > 2 || argc == 0)
 	{
 		printf("USAGE: monty file");
@@ -14,15 +26,6 @@ int main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 
-	//FILE *file_pointer = NULL;
-	//char *buffer = NULL;
-	char *opcode = NULL, *token_1 = NULL;
-	//size_t bytes_qty = 0;
-	//stack_t *head_list = NULL;
-	//int line_number = 1;
-	int value = 0;
-	var_t.line_number = 1;
-
 	/*Abro el archivo*/
 	var_t.file_pointer = fopen(*(argv + 1), "r");
 	/*Asigno tokens a variables y llamo la funcion que busca funciones*/
@@ -33,12 +36,12 @@ int main(int argc, char **argv)
 		printf("buffer = %s\n", var_t.buffer);
 		opcode = strtok(var_t.buffer, " ");
 		printf("opcode %s\n", opcode);
-		token_1 = strtok(NULL, " ");
+		/*token_1 = strtok(NULL, " ");
 		if (token_1)
 			value = atoi(token_1);
 		else
 			value = 0;
-		printf("value %d\n", value);
+		printf("value %d\n", value);*/
 		printf("line = %d | opcode = %s | value = %d\n", var_t.line_number, opcode, value);
 		/* get the opcode, no need to return */
 		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
@@ -46,6 +49,8 @@ int main(int argc, char **argv)
 		printf("%s\n", data); */
 	}
 	fclose(var_t.file_pointer);
+
+	free_dlistint();
 	free(var_t.buffer);
 	return (0);
 }
