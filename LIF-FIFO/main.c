@@ -18,14 +18,43 @@ void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int l
 		{"pall", opcode_pall},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int i = 0, len_str = 0;
+	char *str = NULL;
+
+	while (function[i].opcode != NULL)
+	{
+		str = function[i].opcode;
+		if (strcmp(opcode_input, str) == 0)
+		{
+			printf("Las palabras son identicas\n");
+			function[i].f(head_list, line_number);
+		}
+		i++;
+	}
+
+	/*len_str = strlen(opcode_input);
+	printf("len_str = %d\n", len_str);
+	for (i = 0; opcode_input[i] == function->opcode[i] && opcode_input[i] != '\0'; i++)
+	{
+		printf("%c", opcode_input[i]);
+	}
+	printf("\n");
+	printf("i = %d\n", i);
+	if (i == len_str)
+		function[1].f(head_list, line_number);
+		//printf("son iguales\n");
+	else
+		printf("No son iguales\n");
+
+
+
 
 	/* find the input function in our opcode function */
-	for (; function[i].opcode != NULL; i++)
+	/*for (; function[i].opcode != NULL; i++)
 		;
 	if (function[i].opcode == NULL)
 		return;
-	function[i].f(head_list, line_number);
+	function[i].f(head_list, line_number);*/
 }
 
 /*elimina \n*/
@@ -57,7 +86,7 @@ int main(int argc, char **argv)
 	char *buffer = NULL, *opcode = NULL, *str = "push";
 	size_t bytes_qty = 0;
 	stack_t *head_list = NULL;
-	int line_number = 1, value = 0, i = 0, len_str = 0;
+	int line_number = 1, value = 0, i = 0;
 	char **tokens = NULL;
 
 	file_pointer = fopen(*(argv + 1), "r");
@@ -72,29 +101,10 @@ int main(int argc, char **argv)
 			value = atoi(tokens[1]);
 		else
 			value = 0;
+
 		printf("tokens[0] = %s | opcode = %s\n", tokens[0], opcode);
 		printf("tokens[1] = %s | value = %d\n", tokens[1], value);
 
-
-
-		len_str = strlen(str);
-		printf("len_str = %d\n", len_str);
-		for (i = 0; tokens[0][i] == str[i] && tokens[0][i] != '\0'; i++)
-		{
-			printf("%c", str[i]);
-		}
-		printf("\n");
-		printf("i = %d\n", i);
-		if (i == len_str)
-			printf("son iguales\n");
-		else
-			printf("No son iguales\n");
-
-
-
-		/* get opcode = pall or push */
-		opcode = strtok(buffer, " ");
-		//value = atoi(strtok(NULL, " "));
 		printf("line = %d | opcode = %s | value = %d\n", line_number, opcode, value);
 		/* get the opcode, no need to return */
 		get_opcode_function(opcode, &head_list, line_number);
