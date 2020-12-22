@@ -33,6 +33,12 @@ void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int l
 		}
 		i++;
 	}
+	if (function[i].opcode == NULL)
+	{
+		/*liberar y cerrar*/
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode_input);
+		exit(EXIT_FAILURE);
+	}
 }
 
 
@@ -53,8 +59,8 @@ void opcode_push(stack_t **head_list, unsigned int line_number)
 	new = (malloc(sizeof(stack_t)));
 	if (new == NULL)
 	{
-		dprintf(2, "Error: Can't malloc\n");
-		return;
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 	new->prev = NULL;
 	new->next = *head_list;
