@@ -4,8 +4,8 @@
 int main(int argc, char **argv)
 {
 	char *opcode = NULL, *token_1 = NULL;
-	int value = 0;
-	var_t.line_number = 1;
+/*int value = 0;*/
+/*var_t.line_number = 1;*/
 	(void)token_1;
 	/*FILE *file_pointer = NULL;
 	//char *buffer = NULL;*/
@@ -33,16 +33,16 @@ int main(int argc, char **argv)
 	{
 		/* remove new line */
 		var_t.buffer = new_line_remove(var_t.buffer);
-		printf("buffer = %s\n", var_t.buffer);
+	/*printf("buffer = %s\n", var_t.buffer);*/
 		opcode = strtok(var_t.buffer, " ");
-		printf("opcode %s\n", opcode);
+	/*printf("opcode %s\n", opcode);*/
 		/*token_1 = strtok(NULL, " ");
 		if (token_1)
 			value = atoi(token_1);
 		else
 			value = 0;
 		printf("value %d\n", value);*/
-		printf("line = %d | opcode = %s | value = %d\n", var_t.line_number, opcode, value);
+	/*printf("line = %d | opcode = %s | value = %d\n", var_t.line_number, opcode, value);*/
 		/* get the opcode, no need to return */
 		get_opcode_function(opcode, &var_t.head_list, var_t.line_number);
 		/* *data = NULL ??????????? data = strtok(NULL, " , \n");
