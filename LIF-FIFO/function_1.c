@@ -35,6 +35,8 @@ void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int l
 	}
 }
 
+
+/*crea double linked list agregando nodo al principio LIFO*/
 void opcode_push(stack_t **head_list, unsigned int line_number)
 {
 	stack_t *new = NULL;
@@ -47,7 +49,7 @@ void opcode_push(stack_t **head_list, unsigned int line_number)
 		value = atoi(token);
 	else
 		value = 0;
-	printf("value %d\n", value);
+/*printf("value %d\n", value);*/
 	new = (malloc(sizeof(stack_t)));
 	if (new == NULL)
 	{
@@ -66,11 +68,22 @@ void opcode_push(stack_t **head_list, unsigned int line_number)
 		temp->prev = new;
 	}
 	/*return (new);*/
-	printf("funcion opcode_push line: %d\n", line_number);
+	printf("line is: %d | date is: %d\n", line_number, new->n);
 }
 
-void opcode_pall(__attribute__((unused))stack_t **head_list, unsigned int line_number)
+/*imprime la doble lista linkeada creada en push*/
+void opcode_pall(stack_t **head_list, __attribute__((unused))unsigned int line_number)
 {
+	stack_t *temp = *head_list;
+
+	if (temp == NULL)
+		return;
+	while(temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
+	}
+
 	printf("funcion opcode_pall line_pall: %d\n", line_number);
 }
 
