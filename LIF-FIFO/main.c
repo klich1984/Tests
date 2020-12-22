@@ -4,8 +4,8 @@
 int main(int argc, char **argv)
 {
 	char *opcode = NULL, *token_1 = NULL;
+	var_t.line_number = 1;
 /*int value = 0;*/
-/*var_t.line_number = 1;*/
 	(void)token_1;
 	/*FILE *file_pointer = NULL;
 	//char *buffer = NULL;*/
@@ -15,19 +15,24 @@ int main(int argc, char **argv)
 	//int line_number = 1;*/
 
 
-	if (argc > 2 || argc == 0)
+	if (argc != 2)
 	{
-		printf("USAGE: monty file");
-		return (EXIT_FAILURE);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
-	if (argv[0] == NULL)
+	/*Abro el archivo*/
+	var_t.file_pointer = fopen(*(argv + 1), "r");
+
+	if (var_t.file_pointer == NULL)
 	{
-		printf("Error: Can't open file <file>\n");
-		return (EXIT_FAILURE);
+		/*fprintf(stderr, "Error: Can't open file %s\n", argv[1]);*/
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		/*perror("Error: Can't open file");*/
+		exit(EXIT_FAILURE);
 	}
 
 	/*Abro el archivo*/
-	var_t.file_pointer = fopen(*(argv + 1), "r");
+	/*var_t.file_pointer = fopen(*(argv + 1), "r");*/
 	/*Asigno tokens a variables y llamo la funcion que busca funciones*/
 	for (; getline(&var_t.buffer, &var_t.bytes_qty, var_t.file_pointer) != EOF; var_t.line_number++)
 	{
