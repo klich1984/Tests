@@ -3,6 +3,7 @@
 #include <stdio.h> /* fopen */
 #include <string.h> /* strok */
 #include <stdlib.h> /* free */
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -50,7 +51,8 @@ typedef struct variables_s
 }var;
 
 var var_t;
-extern int value;
+/*extern int value;*/
+extern int errno ;
 char *new_line_remove(char *buffer);
 void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int line_number);
 void opcode_push(stack_t **head_list, unsigned int line_number);
