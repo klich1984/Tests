@@ -28,6 +28,7 @@ void get_opcode_function(char *opcode_input, stack_t **head_list, unsigned int l
 		{
 			printf("Las palabras son identicas\n");
 			function[i].f(head_list, line_number);
+			return;
 		}
 		i++;
 	}
@@ -83,7 +84,7 @@ int main(int argc, char **argv)
 	}
 
 	FILE *file_pointer = NULL;
-	char *buffer = NULL, *opcode = NULL, *str = "push";
+	char *buffer = NULL, *opcode = NULL, *str = "push", *token_1 = NULL;
 	size_t bytes_qty = 0;
 	stack_t *head_list = NULL;
 	int line_number = 1, value = 0, i = 0;
@@ -95,15 +96,23 @@ int main(int argc, char **argv)
 		/* remove new line */
 		buffer = new_line_remove(buffer);
 		printf("buffer = %s\n", buffer);
-		tokens = divide_line(buffer, " ");
-		opcode = tokens[0];
+		//tokens = divide_line(buffer, " ");
+		opcode = strtok(buffer, " ");
+		printf("opcode %s\n", opcode);
+		token_1 = strtok(NULL, " ");
+		if (token_1)
+			value = atoi(token_1);
+		else
+			value = 0;
+		printf("value %d\n", value);
+		/*opcode = tokens[0];
 		if(tokens[1])
 			value = atoi(tokens[1]);
 		else
-			value = 0;
+			value = 0;*/
 
-		printf("tokens[0] = %s | opcode = %s\n", tokens[0], opcode);
-		printf("tokens[1] = %s | value = %d\n", tokens[1], value);
+		//printf("tokens[0] = %s | opcode = %s\n", tokens[0], opcode);
+		//printf("tokens[1] = %s | value = %d\n", tokens[1], value);
 
 		printf("line = %d | opcode = %s | value = %d\n", line_number, opcode, value);
 		/* get the opcode, no need to return */
