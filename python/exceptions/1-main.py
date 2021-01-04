@@ -2,10 +2,9 @@
 #safe_print_integer = __import__('1-safe_print_integer').safe_print_integer
 def safe_print_integer(value):
     try:
-        print("valor es {:d}".format(value))
+        print("{:d}".format(value))
         return True
     except ValueError:
-        print("valor no es un entero")
         return False
 
 value = 89
