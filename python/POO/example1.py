@@ -2,22 +2,25 @@ class Coche():
     #Propiedades del coche estado inicial
     #crear un constructor def __init__(self):
     def __init__(self):
-        self.largochasis = 250
-        self.anchochasis = 120
-        self.ruedas = 4
-        self.enmarcha = False
+        self.__largochasis = 250
+        self.__anchochasis = 120
+        #encapsular (No se puede modificar desde fuera, si desde dentro) una variable precede de __ruedas
+        self.__ruedas = 4
+        #importante que todas las variables encapsuladas se llamen con los __ en todo el programa
+        self.__enmarcha = False
 
     def arrancar(self, arrancamos):
-        self.enmarcha = arrancamos
+        #
+        self.__enmarcha = arrancamos
 
-        if(self.enmarcha):
+        if(self.__enmarcha):
             return "El coche esta en marcha"
         else:
             return "El coche esta parado"
 
     def estado(self):
-        print("El coche tiene ", self.ruedas, "ruedas, Un ancho de ", self.anchochasis, "y un largo de ",
-            self.largochasis)
+        print("El coche tiene ", self.__ruedas, "ruedas, Un ancho de ", self.__anchochasis, "y un largo de ",
+                self.__largochasis)
 
 miCoche = Coche()
 print(miCoche.arrancar(True))
