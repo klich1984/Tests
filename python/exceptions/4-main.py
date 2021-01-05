@@ -7,12 +7,7 @@ def list_division(my_list_1, my_list_2, list_length):
     while idx < list_length:
         try:
             new_list.append(my_list_1[idx]/my_list_2[idx])
-        except ZeroDivisionError:
-            new_list.append(0)
-            pass
-        except TypeError:
-            new_list.append(0)
-        except IndexError:
+        except (ZeroDivisionError, TypeError, IndexError):
             new_list.append(0)
         finally:
             idx += 1
