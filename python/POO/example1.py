@@ -1,9 +1,11 @@
 class Coche():
-    #Propiedades del coche
-    largochasis = 250
-    anchochasis = 120
-    ruedas = 4
-    enmarcha = False
+    #Propiedades del coche estado inicial
+    #crear un constructor def __init__(self):
+    def __init__(self):
+        self.largochasis = 250
+        self.anchochasis = 120
+        self.ruedas = 4
+        self.enmarcha = False
 
     def arrancar(self, arrancamos):
         self.enmarcha = arrancamos
