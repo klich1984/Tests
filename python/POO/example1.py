@@ -5,24 +5,25 @@ class Coche():
     ruedas = 4
     enmarcha = False
 
-    def arrancar(self):
-        self.enmarcha = True
+    def arrancar(self, arrancamos):
+        self.enmarcha = arrancamos
 
-    def estado(self):
         if(self.enmarcha):
             return "El coche esta en marcha"
         else:
             return "El coche esta parado"
 
-miCoche = Coche()
-print("El largo del coche es: ", miCoche.largochasis)
-print("El coche tiene", miCoche.ruedas, "ruedas")
+    def estado(self):
+        print("El coche tiene ", self.ruedas, "ruedas, Un ancho de ", self.anchochasis, "y un largo de ",
+            self.largochasis)
 
-miCoche.arrancar()
-print(miCoche.estado)
+miCoche = Coche()
+print(miCoche.arrancar(True))
+
+miCoche.estado()
+
 print("------------A continuacion creamos el segundo objeto --------------")
 
 miCoche2 = Coche()
-print("El largo del coche es: ", miCoche2.largochasis)
-print("El coche tiene", miCoche2.ruedas, "ruedas")
-print(miCoche2.estado)
+print(miCoche2.arrancar(False))
+miCoche2.estado()
