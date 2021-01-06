@@ -1,3 +1,6 @@
+"""01 ejemplo basico modificando a class Moto
+Sbreescritura de metodos"""
+
 #crear clase padreo o superclase
 class Vehiculos():
     #creamos constructor
@@ -33,10 +36,26 @@ class Vehiculos():
 
 #Crear clase que hereda a vehiculo, la clase moto hereda a vehiculo
 class Moto(Vehiculos):
-    pass
+    """Esta clase tuene 6 metodos, 5 heredados d vehiculos y 1 propio = caballito"""
+    #Creo una variable
+    hcaballito = ""
+    #Creo un metodo
+    def caballito(self):
+        self.hcaballito = "Voy haciendo el caballito"
+
+    #Creamos metodo estado igual al heredado
+    def estado(self):
+        print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEl marcha:", self.enmarcha,
+            "\nAcelerando:", self.acelera, "\nFrenando:", self.frena, "\n", self.hcaballito)
 
 #Crear objeto, se le deben pasar los parametros que tiene el constructor ya que la heredamos
 miMoto = Moto("Honda", "CBR")
+
+#LLamamos a un metodo propio de la clase Moto
+"""de esta manera miMoto.caballito() no nos muestra nada en a salida ya que al llamar miMoto.estado()
+estamos llamando a la clase vehiculo para hacerlo lo que se hace es crear un metodo que se llame
+exactamene igual al heredado y con la misma cantidad de argumentos"""
+#miMoto.caballito()
 
 #Podemos llamar a cualquer instancia que se han heredado
 miMoto.estado()
