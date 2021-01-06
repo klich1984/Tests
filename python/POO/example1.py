@@ -1,16 +1,19 @@
-class Coche():
+class Coche:
     #Propiedades del coche estado inicial
+    #El estado inicial se realiza con un constructtor
     #crear un constructor def __init__(self):
     def __init__(self):
+        #Propiedades que hacen parte de estado inicial del objeto se le antepone con self
+        #encapsular (No se puede modificar desde fuera, si desde dentro) una variable precede de __ruedas
         self.__largochasis = 250
         self.__anchochasis = 120
-        #encapsular (No se puede modificar desde fuera, si desde dentro) una variable precede de __ruedas
         self.__ruedas = 4
         #importante que todas las variables encapsuladas se llamen con los __ en todo el programa
         self.__enmarcha = False
 
+    #Creacion de metodo arrancar
     def arrancar(self, arrancamos):
-        #
+        #Modificamos __enmarcha desde este metodo y no desde afuera
         self.__enmarcha = arrancamos
 
         if(self.__enmarcha):
@@ -18,11 +21,15 @@ class Coche():
         else:
             return "El coche esta parado"
 
+    #Creacion de metodo estado
     def estado(self):
         print("El coche tiene ", self.__ruedas, "ruedas, Un ancho de ", self.__anchochasis, "y un largo de ",
                 self.__largochasis)
 
+    
+#Crear un objeto (instanciar una clase)
 miCoche = Coche()
+#Accedemos al metodo arrancar y le pasamos True selft = miCoche arrancamos recibe True
 print(miCoche.arrancar(True))
 
 miCoche.estado()
