@@ -1,5 +1,7 @@
-"""01 ejemplo basico modificando a class Moto
-Sbreescritura de metodos"""
+"""03 Crear una clase que tenga caracteristicas propias
+Tiene un cosntructor
+implementacion de class VehiculoEL y BicicletaElectrica
+herencia multiple"""
 
 #crear clase padreo o superclase
 class Vehiculos():
@@ -61,6 +63,16 @@ class Moto(Vehiculos):
         print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEn marcha:", self.enmarcha,
             "\nAcelerando:", self.acelera, "\nFrenando:", self.frena, "\n", self.hcaballito)
 
+#creamos objeto llamado VElectricos
+class VElectricos():
+    #Creamos un constructor para esta clase
+    def __init__(self):
+        self.autonomia = 100
+
+    def cargarEnergia(self):
+
+        self.cagando = True
+
 print("--------Objeto miMoto------------")
 #Crear objeto, se le deben pasar los parametros que tiene el constructor ya que la heredamos
 miMoto = Moto("Honda", "CBR")
@@ -82,3 +94,12 @@ miFurgoneta.arrancar()
 miFurgoneta.estado()
 #debemos meterlo en un print ya que la clase esta retornando un string
 print(miFurgoneta.carga(True))
+
+print("--------Objeto miBici------------")
+#Creamos clase BicicletaElectrica que hereda todos los metodos de VElectricos y de Vehiculos
+#OJO tomara el constructor de la primera clase que le pasamos como herencia
+class BicicletaElectrica(VElectricos, Vehiculos):
+    pass
+
+#Creamos un Objeto miBici
+miBici = BicicletaElectrica()
