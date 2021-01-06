@@ -42,7 +42,7 @@ class Coche:
         #creo Varibables del metodo
         self.gasolina = "ok"
         self.aceite = "ok"
-        self.puertas = "cerradas"
+        self.puertas = "abiertas"
         if (self.gasolina == "ok" and self.aceite == "ok" and self.puertas == "cerradas"):
             return True
         else:
