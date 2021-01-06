@@ -31,10 +31,23 @@ class Vehiculos():
 
     #Creamos metodo estado
     def estado(self):
-        print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEl marcha:", self.enmarcha,
+        print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEn marcha:", self.enmarcha,
             "\nAcelerando:", self.acelera, "\nFrenando:", self.frena)
 
-#Crear clase que hereda a vehiculo, la clase moto hereda a vehiculo
+#Crear clase que hereda a Vehiculo, la clase Furgoneta hereda a Vehiculo
+class Furgoneta(Vehiculos):
+
+    #Creamos metodo carga con un parametro adicional cargar
+    def carga(self, cargar):
+        self.cargado = cargar
+        #Si cargado es igual a True (Es verdadero)
+        if(self.cargado):
+            return "La furgoneta esta cargada"
+        else:
+            return "La furgoneta no esta cargada"
+
+
+#Crear clase que hereda a vehiculo, la clase moto hereda a Vehiculo
 class Moto(Vehiculos):
     """Esta clase tuene 6 metodos, 5 heredados d vehiculos y 1 propio = caballito"""
     #Creo una variable
@@ -45,9 +58,10 @@ class Moto(Vehiculos):
 
     #Creamos metodo estado igual al heredado
     def estado(self):
-        print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEl marcha:", self.enmarcha,
+        print("Marca:", self.marca, "\nModelo:", self.modelo, "\nEn marcha:", self.enmarcha,
             "\nAcelerando:", self.acelera, "\nFrenando:", self.frena, "\n", self.hcaballito)
 
+print("--------Objeto miMoto------------")
 #Crear objeto, se le deben pasar los parametros que tiene el constructor ya que la heredamos
 miMoto = Moto("Honda", "CBR")
 
@@ -55,7 +69,16 @@ miMoto = Moto("Honda", "CBR")
 """de esta manera miMoto.caballito() no nos muestra nada en a salida ya que al llamar miMoto.estado()
 estamos llamando a la clase vehiculo para hacerlo lo que se hace es crear un metodo que se llame
 exactamene igual al heredado y con la misma cantidad de argumentos"""
-#miMoto.caballito()
+miMoto.caballito()
 
-#Podemos llamar a cualquer instancia que se han heredado
+#Podemos llamar a cualquer instancia/metodo que se han heredado
 miMoto.estado()
+
+print("--------Objeto miFurgoneta------------")
+#Creamos objeto
+miFurgoneta = Furgoneta("Renault", "Kango")
+#Podemos llamar a cualquer instancia/metodo que se han heredado
+miFurgoneta.arrancar()
+miFurgoneta.estado()
+#debemos meterlo en un print ya que la clase esta retornando un string
+print(miFurgoneta.carga(True))
