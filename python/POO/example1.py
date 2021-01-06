@@ -16,17 +16,38 @@ class Coche:
         #Modificamos __enmarcha desde este metodo y no desde afuera
         self.__enmarcha = arrancamos
 
+        #si self.__enmarcha es True
         if(self.__enmarcha):
+            chequeo = self.chequeo_interno()
+
+        #Si el chequea == True y si chequeo == True
+        if(self.__enmarcha and chequeo):
             return "El coche esta en marcha"
+
+        elif(self.__enmarcha and chequeo == False):
+            return "Algo salio mal en el chequeo, no puedes arrancar"
         else:
             return "El coche esta parado"
 
+    #comportamientos y/o funcionalidades
     #Creacion de metodo estado
     def estado(self):
         print("El coche tiene ", self.__ruedas, "ruedas, Un ancho de ", self.__anchochasis, "y un largo de ",
                 self.__largochasis)
 
-    
+    #Creacion de metodo chequeo_interno
+    def chequeo_interno(self):
+        print("Realizando chequeo interno")
+
+        #creo Varibables del metodo
+        self.gasolina = "ok"
+        self.aceite = "ok"
+        self.puertas = "cerradas"
+        if (self.gasolina == "ok" and self.aceite == "ok" and self.puertas == "cerradas"):
+            return True
+        else:
+            return False
+
 #Crear un objeto (instanciar una clase)
 miCoche = Coche()
 #Accedemos al metodo arrancar y le pasamos True selft = miCoche arrancamos recibe True
