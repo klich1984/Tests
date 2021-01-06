@@ -18,7 +18,7 @@ class Coche:
 
         #si self.__enmarcha es True
         if(self.__enmarcha):
-            chequeo = self.chequeo_interno()
+            chequeo = self.__chequeo_interno()
 
         #Si el chequea == True y si chequeo == True
         if(self.__enmarcha and chequeo):
@@ -36,13 +36,14 @@ class Coche:
                 self.__largochasis)
 
     #Creacion de metodo chequeo_interno
-    def chequeo_interno(self):
+    #Lo encapsulamos para que solo pueda ser usado dentro de la clase anteponiendo __
+    def __chequeo_interno(self):
         print("Realizando chequeo interno")
 
         #creo Varibables del metodo
         self.gasolina = "ok"
         self.aceite = "ok"
-        self.puertas = "abiertas"
+        self.puertas = "cerradas"
         if (self.gasolina == "ok" and self.aceite == "ok" and self.puertas == "cerradas"):
             return True
         else:
@@ -60,3 +61,4 @@ print("------------A continuacion creamos el segundo objeto --------------")
 miCoche2 = Coche()
 print(miCoche2.arrancar(False))
 miCoche2.estado()
+print(miCoche2.chequeo_interno())
