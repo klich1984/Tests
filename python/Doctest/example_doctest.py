@@ -1,15 +1,13 @@
-#doctest_tracebacks.py
+#doctest_blankline_fail.py 
+def double_space(lines):
+    """Prints a list of lines double-spaced.
 
-def this_raises():
-    """This function always raises an exception.
-
-    >>> this_raises()
-    Traceback (most recent call last):
-    RuntimeError: here is the error
-
-    >>> this_raises()
-    Traceback (innermost last):
-    RuntimeError: here is the error
-
+    >>> double_space(['Line one.', 'Line two.'])
+    Line one.
+    <BLANKLINE>
+    Line two.
+    <BLANKLINE>
     """
-    raise RuntimeError('here is the error')
+    for l in lines:
+        print(l)
+        print()
