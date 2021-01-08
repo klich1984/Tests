@@ -1,13 +1,10 @@
-#doctest_blankline_fail.py 
-def double_space(lines):
-    """Prints a list of lines double-spaced.
+#doctest_extra_space.py
 
-    >>> double_space(['Line one.', 'Line two.'])
-    Line one.
-    <BLANKLINE>
-    Line two.
-    <BLANKLINE>
+def my_function(a, b):
     """
-    for l in lines:
-        print(l)
-        print()
+    >>> my_function(2, 3) #doctest: +REPORT_NDIFF
+    6 
+    >>> my_function('a', 3)
+    'aaa'
+    """
+    return a * b
