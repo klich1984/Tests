@@ -1,35 +1,14 @@
-#ellipsis
+#doctest_tracebacks.py
 
-class MyClass:
-    pass
+def this_raises():
+    """This function always raises an exception.
 
-
-def unpredictable(obj):
-    """Returns a new list containing obj.
-
-    >>> unpredictable(MyClass()) #doctest: +ELLIPSIS
-    [<example_doctest.MyClass object at 0x...>]
+    >>> this_raises()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/no/such/path/doctest_tracebacks.py", line 14, in
+      this_raises
+        raise RuntimeError('here is the error')
+    RuntimeError: here is the error
     """
-    return [obj]
-
-
-# doctest_hashed_values_test.py
-import collections
-
-def group_by_length(words):
-    """Returns a dictionary grouping words into sets by length.
-
-    >>> grouped = group_by_length(["python", "module", "of",
-    ... "the", "week" ])
-    >>> grouped == {2:set(["of"]),
-    ...             3:set(["the"]),
-    ...             4:set(["week"]),
-    ...             6:set(["python", "module"]),
-    ...             }
-    True
-
-    """
-    d = collections.defaultdict(set)
-    for word in words:
-        d[len(word)].add(word)
-    return d
+    raise RuntimeError('here is the error')
