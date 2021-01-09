@@ -18,8 +18,11 @@ def palindromo(palabra):
 
     >>> palindromo("Ana")
     True
+
+    >>> palindromo("Atar a la rata")
+    True
     """
-    if palabra.lower() == palabra[::-1].lower():
+    if palabra.lower().replace(" ", "") == palabra[::-1].lower().replace(" ", ""):
         return True
     else:
         return False
