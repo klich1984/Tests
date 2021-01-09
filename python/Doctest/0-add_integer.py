@@ -1,31 +1,18 @@
 #!/usr/bin/python3
-"""suma dos enteros"""
 
+def doblar(lista):
+    """Dobla el valor de los elementos de una lista
+    >>> l = [1, 2, 3, 4, 5]
+    >>> doblar(l)
+    [2, 4, 6, 8, 10]
 
-def palindromo(palabra):
-    """Comprueba si una palabra es un palíndrimo. Los palíndromos son
-    palabras o frases que se leen igual de ambos lados.
-    Si es un palíndromo devuelve True y si no False
-
-    >>> palindromo("radar")
-    True
-
-    >>> palindromo("somos")
-    True
-
-    >>> palindromo("holah")
-    False
-
-    >>> palindromo("Ana")
-    True
-
-    >>> palindromo("Atar a la rata")
-    True
+    >>> l = []
+    >>> for i in range(10):
+    ...     l.append(i)
+    >>> doblar(l)
+    [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
     """
-    if palabra.lower().replace(" ", "") == palabra[::-1].lower().replace(" ", ""):
-        return True
-    else:
-        return False
+    return[n*2 for n in lista]
 
 if __name__ == "__main__":
     import doctest
