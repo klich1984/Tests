@@ -19,7 +19,7 @@ def palindromo(palabra):
     >>> palindromo("Ana")
     True
     """
-    if palabra == palabra[::-1]:
+    if palabra.lower() == palabra[::-1].lower():
         return True
     else:
         return False
