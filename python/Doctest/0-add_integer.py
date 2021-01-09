@@ -2,23 +2,27 @@
 """suma dos enteros"""
 
 
-def add_integer(a, b):
-    """add_integer recibe dos enteros y los suma
+def palindromo(palabra):
+    """Comprueba si una palabra es un palíndrimo. Los palíndromos son
+    palabras o frases que se leen igual de ambos lados.
+    Si es un palíndromo devuelve True y si no False
 
-    Args:
-        a (int, float): argumento que se sumara con b
-        b (int, float):  argumento que se sumara con b.
+    >>> palindromo("radar")
+    True
 
-    >>> add_integer(5, 10)
-    15
+    >>> palindromo("somos")
+    True
 
-    >>> add_integer(5, 10)
-    0
+    >>> palindromo("holah")
+    False
 
-    >>> add_integer(-5, 10)
-    5
+    >>> palindromo("Ana")
+    True
     """
-    return a + b
+    if palabra == palabra[::-1]:
+        return True
+    else:
+        return False
 
 if __name__ == "__main__":
     import doctest
