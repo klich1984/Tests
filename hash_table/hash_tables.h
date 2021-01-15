@@ -28,6 +28,6 @@ typedef struct
 	hash_datos_t *datos;
 	int num_datos;
 	int num_max_datos;
-}hash_node;
+}hash_node_t;
 
 #endif
