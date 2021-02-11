@@ -6,24 +6,24 @@ class Car:
         self.color = color
         self.model = model
         self.year = year
-        self.__cupholders = 6
+        self._voltage = 12
+
+    @property
+    def voltage(self):
+        return self._voltage
+
+    @voltage.setter
+    def voltage(self, volts):
+        print('Advertencia: !esto puede causar problemas!')
+        self._voltage = volts
+
+    @voltage.deleter
+    def voltage(self):
+        print('Advertencia: ¡la radio dejará de funcionar!')
+        del self._voltage
 
 my_car = Car('Yellow', 'beetle', 1967)
-my_new_car = Car('red', 'corvette', 1999)
-print(f'My car is {my_car.color}')
-print(f'My nw car is {my_new_car.color}')
-# modifico el vatributo wheels de la clase
-Car.wheels = 5
-print(f'wheels class: {Car.wheels}')
-# modifico el atributo de la instancia my_car no se modifica la de la clase
-my_car.wheels = 4
-my_new_car.wheels = 8
-Car.wheels = 20
-print(f'wheels my_car: {my_car.wheels}')
-print(f'wheels class: {Car.wheels}')
-print(f'wheels my_new_car: {my_new_car.wheels}')
-#accediento al atributo PRIVADO __cupholders
-# print(f'It has {my_car.__cupholders} cupholders.')
-# Error AttributeError: 'Car' object has no attribute '__cupholders'
-# no lo encuentra por que cambia el nombre del atributo por _Car__cupholders
-print(f'It has {my_car._Car__cupholders} cupholders.') # Si accede al atributo PRIVADO
+print(f'My car uses {my_car.voltage} volts')
+my_car.voltage = 6
+print(f'My car now uses {my_car.voltage} volts')
+del my_car.voltage
