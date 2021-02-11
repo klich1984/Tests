@@ -6,7 +6,7 @@ class Car:
         self.color = color
         self.model = model
         self.year = year
-        self._cupholders = 6
+        self.__cupholders = 6
 
 my_car = Car('Yellow', 'beetle', 1967)
 my_new_car = Car('red', 'corvette', 1999)
@@ -22,8 +22,8 @@ Car.wheels = 20
 print(f'wheels my_car: {my_car.wheels}')
 print(f'wheels class: {Car.wheels}')
 print(f'wheels my_new_car: {my_new_car.wheels}')
-#accediento al atributo NO PUBLICO _cupholders
-print(f'It has {my_car._cupholders} cupholders.')
-
-
-
+#accediento al atributo PRIVADO __cupholders
+# print(f'It has {my_car.__cupholders} cupholders.')
+# Error AttributeError: 'Car' object has no attribute '__cupholders'
+# no lo encuentra por que cambia el nombre del atributo por _Car__cupholders
+print(f'It has {my_car._Car__cupholders} cupholders.') # Si accede al atributo PRIVADO
