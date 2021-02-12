@@ -1,5 +1,12 @@
 #!/usr/bin/python3
 
+try:
+    import gnureadline
+    import sys
+    sys.modules['readline'] = gnureadline
+except ImportError:
+    pass
+
 import cmd
 
 class HelloWorld(cmd.Cmd):
@@ -7,8 +14,18 @@ class HelloWorld(cmd.Cmd):
     prompt = '--> '
     file = None
 
-    def do_saludar(self, line):
-        print('Hola Mundo')
+    def do_saludar(self, persona):
+        """ Saluda [Persona] """
+        if persona: #Si persona existe
+            print('Hola', persona)
+        else:
+            print('Hola')
+
+    def help_saludar(self):
+        print('\n'.join([
+            'Saludar [persona]',
+            'Saluda a la persona nombrada',
+        ]))
 
     def do_fin(self, line):
         return True
