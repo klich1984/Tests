@@ -10,9 +10,9 @@ def save_to_json_file(my_obj, filename):
         my_obj (objeto): Objeto que sera convertido a texto en representacion json
         filename (str): string que sera el nombre del archivo donde se guardara el objeto
     """
-    x = json.dumps(my_obj)  #Me convierte el objeto en un string (representacion json)
+    #x = json.dumps(my_obj)  #Me convierte el objeto en un string (representacion json)
     with open(filename, 'w', encoding='utf-8') as fd:
-        fd.write(x)
+        fd.write(json.dumps(my_obj))
 
 filename = "/home/klich1984/holbeton/Tests/examples_json/my_list.json"
 my_list = [1, 2, 3]
