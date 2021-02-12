@@ -14,18 +14,28 @@ class HelloWorld(cmd.Cmd):
     prompt = '--> '
     file = None
 
-    def do_saludar(self, persona):
-        """ Saluda [Persona] """
-        if persona: #Si persona existe
-            print('Hola', persona)
-        else:
-            print('Hola')
+    FRIENDS = ['klich84', 'Adam', 'Barbara', 'Bob']
 
-    def help_saludar(self):
-        print('\n'.join([
-            'Saludar [persona]',
-            'Saluda a la persona nombrada',
-        ]))
+    def do_greet(self, person):
+        "Greet the person"
+        if person and person in self.FRIENDS:
+            greeting = 'hi, {}!'.format(person)
+        elif person:
+            greeting = 'hello, {}'.format(person)
+        else:
+            greeting = 'hello'
+        print(greeting)
+
+    def complete_greet(self, text, line, begidx, endidx):
+        if not text:
+            completions = self.FRIENDS[:]
+        else:
+            completions = [
+                f
+                for f in self.FRIENDS
+                if f.startswith(text)
+            ]
+        return completions
 
     def do_fin(self, line):
         return True
