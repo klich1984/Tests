@@ -1,0 +1,26 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.caja1{
+	width: 200px;
+	height: 200px;
+	background: red;
+	/*margin auto la centra en la pagina horizontalmente*/
+	margin: auto;
+	border: 10px solid blue;
+	/*box-sizing: content-box;  me suma el total de los propiedades dades margin + border ´+ content*/
+	box-sizing: content-box;
+}
+
+.caja2{
+	width: 200px;
+	height: 200px;
+	background: yellow;
+	margin: auto;
+	/*outline es un borde que no ocupa espacio, sirve para marcar elelmentos
+	la caj sigue midiendo lo mismo no se suma el outline a las medidas como si lo hace el border*/
+	outline: 10px solid red;
+}
