@@ -112,18 +112,19 @@ que el al hijo le damos un valor de z-index de -1 y el padre no tener z-index*/
 
 div{
 	display: block;
-	background: yellow;
+	background: green;
 	position: absolute;
 }
 /*div que estan dentro de otro div, no afecta al contenedor en este ejemplo*/
 div div{
-	height: 75px;
-	width: 75px;
-	
+	height: 100px;
+	width: 100px;
+	background: yellow;
 }
 
 .contenedor{
-	position: static;
+	/* si lo dejamos estatic las cajas se posicionan con respecto al la pantalla ya que no esta posicionado position: static; */
+	position: relative;
 	border: 4px solid red;
 	margin: 50px auto;
 	width: 450px;
@@ -131,28 +132,37 @@ div div{
 }
 
 .caja1{
-	background: orange;
-	position: absolute;
+	left: 0;
 }
 
 .caja2{
-	background: green;
-	position: absolute;
 	/*en las 2 lineas siguientes es un ejemplo de que la caja no desaparece
 	solo que esta por debajo de la tresopacit es la transparencia del elemento*/
 	/*
 	opacity: .5;
 	margin-left: 300px;
 	*/
+	/*muevo la caja con respecto a su contenedor (por que este esta posicionado) a la derecha*/
+	right: 0;
 }
 
 
 .caja3{
-	background: lightblue;
-	position: absolute;
+	/*muevo la caja con respecto a su contenedor (por que este esta posicionado) a la derecha y abajo*/
+	right: 0;
+	bottom: 0;
 }
 
 .caja4{
-	background: blue;
-	position: absolute;
+	/*muevo la caja con respecto a su contenedor (por que este esta posicionado) abajo*/
+	bottom: 0;
+}
+
+.caja5{
+	/*centrar una caja*/
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
 }
