@@ -2,17 +2,19 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	font-weight: 100px;
+	font-size: 30px;
 }
 
-.caja1{
+/*.caja1{
 	width: 200px;
 	height: 200px;
 	background: red;
 	/*margin auto la centra en la pagina horizontalmente*/
-	margin: auto;
+/*	margin: auto;
 	border: 10px solid blue;
 	/*box-sizing: content-box;  me suma el total de los propiedades dades margin + border ´+ content*/
-	box-sizing: content-box;
+/*	box-sizing: content-box;
 }
 
 .caja2{
@@ -22,5 +24,58 @@
 	margin: auto;
 	/*outline es un borde que no ocupa espacio, sirve para marcar elelmentos
 	la caj sigue midiendo lo mismo no se suma el outline a las medidas como si lo hace el border*/
-	outline: 10px solid red;
+/*	outline: 10px solid red;
+}*/
+
+/*ejemplo outline
+div{
+	width: 200px;
+	height: 200px;
+	background: yellow;
+	display: inline-block;
+}
+
+la visual se ve en asi por el zindex
+.caja1, .caja4{
+	outline: 5px solid blue;
+}*/
+
+/*ejemplos position: posicionar el elemento, perdemos el flujo de html
+	al posicionar un elemento adquiere 5 propiedades nuevas: top, left, bottom, right, z index
+	static: No esta poscionado
+	relative: 
+	absolute: 
+	fixed: 
+	sticky: 
+	*/
+div{
+	width: 120px;
+	height: 120px;
+	display: block;
+	background: yellow;
+}
+
+.caja1{
+	background: orange;
+}
+
+.caja2{
+	background: green;
+	/*conserva su espacio* y su punto de referencia es el original
+	Las propiedades top y left tienen mayor hjrarquia*/
+	position: relative;
+	top: 50px;
+	left: 50px;
+	/*z-index solo funciona cuando la caja esta posicionada*/
+	z-index: 100;
+}
+
+.caja3{
+	background: lightblue;
+	/*conserva el efecto de cascada*/
+	position: relative;
+}
+
+.caja4{
+	background: yellow;
 }
