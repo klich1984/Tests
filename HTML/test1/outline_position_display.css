@@ -43,11 +43,12 @@ la visual se ve en asi por el zindex
 /*ejemplos position: posicionar el elemento, perdemos el flujo de html
 	al posicionar un elemento adquiere 5 propiedades nuevas: top, left, bottom, right, z index
 	static: No esta poscionado
-	relative: 
-	absolute: 
+	relative: conserva su espacio y su punto de referencia es el original Las propiedades top y left tienen mayor jerarquia*
+	absolute: el espacio no se reserva y el punto de referencia es el contenedor o view port todo lo que se ve en l apantalla
 	fixed: 
 	sticky: 
 	*/
+/**
 div{
 	width: 120px;
 	height: 120px;
@@ -63,19 +64,95 @@ div{
 	background: green;
 	/*conserva su espacio* y su punto de referencia es el original
 	Las propiedades top y left tienen mayor hjrarquia*/
+/*
 	position: relative;
 	top: 50px;
 	left: 50px;
+*/
 	/*z-index solo funciona cuando la caja esta posicionada*/
+/*
 	z-index: 100;
 }
+
 
 .caja3{
 	background: lightblue;
 	/*conserva el efecto de cascada*/
-	position: relative;
+/*	position: relative;
 }
 
 .caja4{
 	background: yellow;
+}
+*/
+
+/*ejemplo 2 la unica forma de colocar al hijo por debajo del padre es
+que el al hijo le damos un valor de z-index de -1 y el padre no tener z-index*/
+/*
+.contenedor{
+	width: 300px;
+	height: 300px;
+	background: blue;
+	margin: 40px;
+	position: relative;
+}
+
+.hijo{
+	background: orange;
+	width: 120px;
+	height: 120px;
+	position: relative;
+	top: -20px;
+	left: -20px;
+	z-index: -1;
+}
+*/
+
+/* ejemplo 3 position: absolute*/
+
+div{
+	display: block;
+	background: yellow;
+	position: absolute;
+}
+/*div que estan dentro de otro div, no afecta al contenedor en este ejemplo*/
+div div{
+	height: 75px;
+	width: 75px;
+	
+}
+
+.contenedor{
+	position: static;
+	border: 4px solid red;
+	margin: 50px auto;
+	width: 450px;
+	height: 450px;
+}
+
+.caja1{
+	background: orange;
+	position: absolute;
+}
+
+.caja2{
+	background: green;
+	position: absolute;
+	/*en las 2 lineas siguientes es un ejemplo de que la caja no desaparece
+	solo que esta por debajo de la tresopacit es la transparencia del elemento*/
+	/*
+	opacity: .5;
+	margin-left: 300px;
+	*/
+}
+
+
+.caja3{
+	background: lightblue;
+	position: absolute;
+}
+
+.caja4{
+	background: blue;
+	position: absolute;
 }
