@@ -1,0 +1,45 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+h2{
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	/*color de fondo*/
+	background-color: red;
+	/*grosor peso*/
+	font-weight: 700;
+	/*convertirlo en elemento de linea*/
+	display: inline-block;
+	/*distancia entre texto y la caja(propiedad acortada)
+	se puede individualmente asi o tmbien todo en una linea
+	padding-top: 20px;
+	padding-right: 15px;
+	padding-bottom: 0;;
+	padding-left: 40px;
+	donde va en sentido horario
+	padding: top right bottom left;*/
+	padding: 100px;
+	/*propiedad acortada*/
+	border: 10px solid black;
+	/*width: 300px;*/
+	/*height: 300px;*/
+	/*centrar texto horizontalmente*/
+	text-align: center;
+	margin: 10px;
+	/*bordear los bordes*/
+	border-radius: 50px;
+	/*da sombra a la caja
+	ejex ejey desenfoque borde color
+	aumnetar intensidad se repite el patron separado por coma
+	ej: 20px 10px 10px 0 blue, 20px 10px 10px 0 blue;*/
+	box-shadow: 20px 10px 10px 0 blue;
+	/*da sombra al texto
+	ejex ejey desenfoque color
+	aumnetar intensidad se repite el patron separado por coma
+	ej: 2px 2px 7px white, 2px 2px 7px white;*/
+	text-shadow: 2px 2px 7px white,2px 2px 7px white, 2px 2px 7px white, 2px 2px 7px white;
+	/*propiedad (funcion) para rotar*/
+	transform: rotate(4deg);
+}
