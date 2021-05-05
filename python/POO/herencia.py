@@ -1,6 +1,4 @@
-"""03 Crear una clase que tenga caracteristicas propias
-Tiene un cosntructor
-implementacion de class VehiculoEL y BicicletaElectrica
+"""04 funcion super() y isinstance()
 herencia multiple"""
 
 #crear clase padreo o superclase
@@ -64,9 +62,11 @@ class Moto(Vehiculos):
             "\nAcelerando:", self.acelera, "\nFrenando:", self.frena, "\n", self.hcaballito)
 
 #creamos objeto llamado VElectricos
-class VElectricos():
+class VElectricos(Vehiculos):
     #Creamos un constructor para esta clase
-    def __init__(self):
+    def __init__(self, marca, modelo):
+        #LLamar al constructor padre y pasarle una marca y un modelo
+        super().__init__(marca, modelo)
         self.autonomia = 100
 
     def cargarEnergia(self):
@@ -102,4 +102,4 @@ class BicicletaElectrica(VElectricos, Vehiculos):
     pass
 
 #Creamos un Objeto miBici
-miBici = BicicletaElectrica()
+miBici = BicicletaElectrica("BMW", "2021")
